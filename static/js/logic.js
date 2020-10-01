@@ -49,8 +49,8 @@ for (var i = 0; i < earthquakeData.length; i++) {
         L.circle(earthquakeData[i].geometry.coordinates.slice(0, 2).reverse(), {
             color: 'red',
             fillColor: 'white',
-            fillOpacity: 0.5,
-            radius: earthquakeData[i].properties.mag*5000
+            fillOpacity: 0.5//,
+            // radius: earthquakeData[i].properties.mag * 5000
         }).bindPopup('<h1>' + earthquakeData[i].place + '</h1>')
     );
 }
@@ -69,7 +69,7 @@ function createFeatures(earthquakeData) {
     // Define a function we want to run once for each feature in the features array
     // Give each feature a popup describing the mag[nitude] and place of the earthquake
     function onEachFeature(feature, layer) {
-        layer.bindPopup('<h3>' + feature.properties.mag + '<br>' + feature.properties.place + '</h3><hr><p>' + new Date(feature.properties.time) + '</p>');
+        layer.bindPopup('<h3> Magnitude: ' + feature.properties.mag + '<br> Place: ' + feature.properties.place + '</h3><hr><p> Date: ' + new Date(feature.properties.time) + '</p>');
     }
 
     // Create a GeoJSON layer containing the features array on the earthquakeData object
@@ -134,9 +134,32 @@ function createMap(earthquakes) {
 }
 
 
-// Step 6: Create size function 
-// This will determine the size of the markers based on the magnitude of the earthquake
+// Step 6: Create size and color functions
+// This will determine the size and color of the markers based on the magnitude of the earthquake
 // ----------------------------------------------------
-function size(mag) {
-    // 
+function markerSize(mag) {
+    return mag * 5000
+}
+
+function markerColor(mag) {
+    if (mag <= 1) {
+        // white
+        return "#FFFFFF";
+    } else if (mag <= 2) {
+        // light yellow
+        return "#FFFF99";
+    } else if (mag <= 3) {
+        // yellow-orange
+        return "#FFCC00";
+    } else if (mag <= 4) {
+        // dark orange
+        return "#FF6600";
+    } else if (mag <= 5) {
+        // bright red
+        return "#FF0000";
+    } else if (mag <= 6) {
+        // deep red
+        return "#993300";
+    };
+
 }
