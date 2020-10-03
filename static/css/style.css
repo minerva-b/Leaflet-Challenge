@@ -8,3 +8,28 @@ body,
 html {
   height: 100%;
 }
+
+.legend {
+  line-height: 20px;
+  color: rgb(30, 30, 30);
+}
+.legend i {
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin-right: 20px;
+  opacity: 1;
+}
+
+.info {
+  padding: 8px 10px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+.info h4 {
+  margin: 0 0 10px;
+  color: #777;
+}
