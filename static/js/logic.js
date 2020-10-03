@@ -11,7 +11,7 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 // This will determine the size and color of the markers based on the magnitude of the earthquake
 // ----------------------------------------------------
 function markerSize(mag) {
-    return mag * 15000
+    return mag * 25000
 }
 
 function getColor(d) {
