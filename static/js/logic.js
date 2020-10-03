@@ -42,7 +42,7 @@ function createFeatures(earthquakeData) {
         // Define a function we want to run once for each feature in the features array
         // Give each feature a popup describing the mag[nitude] and place of the earthquake
         onEachFeature: function (feature, layer) {
-            layer.bindPopup('<h3> Magnitude: ' + feature.properties.mag + '<br> Place: ' + feature.properties.place + '</h3><hr><p> Date: ' + new Date(feature.properties.time) + '<br>' + 'Depth: ' + feature.geometry.coordinates[2] + '</p>')
+            layer.bindPopup('<h3> Magnitude: ' + feature.properties.mag + '<br> Location: ' + feature.properties.place + '</h3><hr><p><b> Date: ' + new Date(feature.properties.time) + '<br>' + 'Depth: ' + feature.geometry.coordinates[2] + '</b></p>')
         },
 
         // Adding pointToLayer for circleMarkers
