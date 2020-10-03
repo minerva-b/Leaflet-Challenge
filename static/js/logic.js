@@ -14,36 +14,18 @@ function markerSize(mag) {
     return mag * 15000
 }
 
-function markerColor(depth) {
-    if (depth >= 90) {
-        // deep red
-        return "#993300";
-
-    } else if (depth >= 70) {
-        // bright red
-        return "#FF0000";
-
-    } else if (depth >= 50) {
-        // dark orange
-        return "#FF6600";
-
-    } else if (depth >= 30) {
-        // yellow-orange
-        return "#FFCC00";
-
-    } else if (depth > 10) {
-        // light yellow
-        return "#FFFF99";
-    } else {
-        // green
-        return '#00FF00'
-    }
+function getColor(d) {
+    return d >= 90 ? '#800026':
+           d >= 70 ? '#BD0026':
+           d >= 50 ? '#E31A1C':
+           d >= 30 ? '#FC4E2A':
+           d >= 10 ? '#FD8D3C':
+                     '#FFEDA0';
 }
-
 
 // Step 3: Perform a GET request to the url
 // ----------------------------------------------------
-d3.json(url, function(data) {
+d3.json(url, function (data) {
 
     // Once we get a response, send the earthquakeData.createFeatures object to the createFeatures function
     createFeatures(data.features);
@@ -60,18 +42,20 @@ function createFeatures(earthquakeData) {
         // Define a function we want to run once for each feature in the features array
         // Give each feature a popup describing the mag[nitude] and place of the earthquake
         onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h3> Magnitude: ' + feature.properties.mag + '<br> Place: ' + feature.properties.place + '</h3><hr><p> Date: ' + new Date(feature.properties.time) + '<br>' + 'Depth: ' + feature.geometry.coordinates[2] + '</p>')
+            layer.bindPopup('<h3> Magnitude: ' + feature.properties.mag + '<br> Place: ' + feature.properties.place + '</h3><hr><p> Date: ' + new Date(feature.properties.time) + '<br>' + 'Depth: ' + feature.geometry.coordinates[2] + '</p>')
         },
 
         // Adding pointToLayer for circleMarkers
         pointToLayer: function (feature, latlng) {
             return new L.circle(latlng,
-            {
-                radius: markerSize(feature.properties.mag),
-                fillColor: markerColor(feature.geometry.coordinates[2]),
-                fillOpacity: 1,
-                stroke: false
-            })
+                {
+                    radius: markerSize(feature.properties.mag),
+                    fillColor: getColor(feature.geometry.coordinates[2]),
+                    fillOpacity: 0.5,
+                    stroke: true,
+                    color: 'black',
+                    weight: 0.25
+                })
         }
     });
 
@@ -88,7 +72,7 @@ function createMap(earthquakes) {
     var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         tileSize: 512,
-        maxZoom: 18,
+        // maxZoom: 18,
         zoomOffset: -1,
         id: "light-v10",
         accessToken: API_KEY
@@ -97,7 +81,7 @@ function createMap(earthquakes) {
     var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         tileSize: 512,
-        maxZoom: 18,
+        // maxZoom: 18,
         zoomOffset: -1,
         id: "dark-v10",
         accessToken: API_KEY
@@ -117,7 +101,7 @@ function createMap(earthquakes) {
     // Create map, giving it the lightmap and earthquakes
     var myMap = L.map("mapid", {
         center: [37.0902, -97.7129],
-        zoom: 5,
+        zoom: 4,
         layers: [lightmap, earthquakes]
     });
 
@@ -128,22 +112,21 @@ function createMap(earthquakes) {
         collapsed: false
     }).addTo(myMap);
 
-    
-    // Create legend
 
-    var legend = L.control({
-        position: 'bottomright',
-        fillColor: '#FFCC00'
-    });
+    // Create legend
+    var legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function () {
-        var div = L.DomUtil.create('div', 'info legend'),
-            magnitudes = [0, 1, 2, 3, 4, 5, 6];
+        var div = L.DomUtil.create('div', 'info legend');
+        var depths = [-10, 10, 30, 50, 70, 90];
 
-        for (var i = 0; i < magnitudes.length; i++) {
+        var legendHeader = '<h3> Earthquake <br> Depth </h3><hr>'
+            div.innerHTML = legendHeader;
+
+        for (var i = 0; i < depths.length; i++) {
             div.innerHTML +=
-            '<i style="background:' + markerColor(magnitudes[i] + 1) + '"></i> ' + magnitudes[i] + (magnitudes[i+1] ? ' - ' + magnitudes[i+1] + '<br>' : ' + ');
-        }
+                '<i style="background:' + getColor(depths[i] + 1) + '"></i> ' + depths[i] + (depths[i + 1] ? ' - ' + depths[i + 1] + '<br>' : ' + ');
+        };
 
         return div;
     };
