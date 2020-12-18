@@ -1,11 +1,23 @@
 # Depth & Magnitude: Visualizing Data with Leaflet
+
+Check out the live website: https://minerva-b.github.io/Leaflet-Challenge/
+The USGS GeoJSON data updates every 5 minutes. Therefore, when the site is visited it will display the most recent earthquake data.
+
 Below are some screenshots of the final product:
+---
 
-A view of North America
-https://github.com/minerva-b/Leaflet-Challenge/blob/master/images/dark_leaflet_north_america.jpg
-A view of the World
-https://github.com/minerva-b/Leaflet-Challenge/blob/master/images/dark_leaflet_world.jpg
+### A view of North America
+![1-Logo](images/dark_leaflet_north_america.jpg)
+*Note: Image captured 12.18.2020
 
+### A view of the World
+![2-Logo](images/dark_leaflet_world.jpg)
+*Note: Image captured 12.18.2020
+
+
+
+If you wish to give this a try follow the instructions below:
+---
 ## Background
 
 Welcome to the United States Geological Survey, or USGS for short! The USGS is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes. As a new hire, you will be helping them out with an exciting new project!
