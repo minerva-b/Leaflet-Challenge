@@ -1,4 +1,4 @@
-# Visualizing Data with Leaflet
+# Depth & Magnitude: Visualizing Data with Leaflet
 
 ## Background
 
