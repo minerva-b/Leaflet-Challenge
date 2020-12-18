@@ -1,4 +1,10 @@
 # Depth & Magnitude: Visualizing Data with Leaflet
+Below are some screenshots of the final product:
+
+A view of North America
+https://github.com/minerva-b/Leaflet-Challenge/blob/master/images/dark_leaflet_north_america.jpg
+A view of the World
+https://github.com/minerva-b/Leaflet-Challenge/blob/master/images/dark_leaflet_world.jpg
 
 ## Background
 
