@@ -15,11 +15,10 @@ Below are some screenshots of the final product:
 *Note: Image captured 12.18.2020
 
 
-Thank you for checking out my work. For further inquiries, check out my LinkedIn account: https://www.linkedin.com/in/minerva-b-07473115/.
+Thank you for checking out my work. For further inquiries, check out my LinkedIn account: https://www.linkedin.com/in/minerva-b-07473115/. If you wish to give this a try follow the instructions below:
 
-
-If you wish to give this a try follow the instructions below:
 ---
+
 ## Background
 
 Welcome to the United States Geological Survey, or USGS for short! The USGS is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes. As a new hire, you will be helping them out with an exciting new project!
