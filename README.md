@@ -15,6 +15,8 @@ Below are some screenshots of the final product:
 *Note: Image captured 12.18.2020
 
 
+Thank you for checking out my work. For further inquiries, check out my LinkedIn account: https://www.linkedin.com/in/minerva-b-07473115/.
+
 
 If you wish to give this a try follow the instructions below:
 ---
